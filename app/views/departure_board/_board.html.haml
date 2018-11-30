@@ -1,0 +1,24 @@
+%div
+  %table
+    %tr.headers
+      %th Arrival Time
+      %th Departure Time
+      %th Line
+      %th Train#
+      %th Track
+      %th Status
+
+    - line_data.each do |data|
+      %tr
+        %td
+          = data['arrival_time'].present? ? data['arrival_time'].to_datetime.strftime('%r') : ''
+        %td
+          = data['departure_time'].present? ? data['departure_time'].to_datetime.strftime('%r') : ''
+        %td
+          = data['route']
+        %td
+          = data['vehicle']
+        %td
+          = data['platform'] || 'TBD'
+        %td
+          = data['status']

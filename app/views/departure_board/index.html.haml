@@ -1,0 +1,15 @@
+.date{style: "float:left"}
+  = Date.today.strftime("%A <br/> %D").html_safe
+
+.time{style:"float:right"}
+  Current Time
+  %br
+  = Time.now.strftime('%r')
+
+- @board.each_pair do |station, data|
+  .board-header{style: "clear:both"}
+    = station
+
+  = render partial: "board", locals: { line_data: data }
+
+  %br
